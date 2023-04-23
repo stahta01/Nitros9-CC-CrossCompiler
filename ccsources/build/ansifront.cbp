@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="ansifront" />
+		<Option makefile="ansifront.mak" />
+		<Option makefile_is_custom="1" />
+		<Option execution_dir="H:/devel/m65x_and_m68x_projects/repos/Nitros9-CC-CrossCompiler/ccsources/build" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="bin/Debug/ansifront" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../ansifront/ansifront.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ansifront/ansifront.h" />
+		<Unit filename="../ansifront/decl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ansifront/expr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../ansifront/poexpr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ansifront.mak" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
