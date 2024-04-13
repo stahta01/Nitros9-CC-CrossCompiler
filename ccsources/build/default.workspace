@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="rma Workspace">
+		<Project filename="ansifront.cbp" />
+		<Project filename="c_comp.cbp" />
+		<Project filename="c_opt.cbp" />
+		<Project filename="cc253.cbp" />
+		<Project filename="cprep19.cbp" />
+		<Project filename="rlink.cbp" />
+		<Project filename="rma.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>
