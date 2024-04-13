@@ -1,0 +1,2 @@
+C:\msys64\mingw32
+$(TARGET_COMPILER_DIR)/../usr/bin
