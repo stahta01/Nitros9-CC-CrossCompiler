@@ -4,7 +4,7 @@ include ../make.common
 # SOFTLINK	= ln -s
 # RM		= rm
 # MAKE		= make
-CFLAGS		= -w -Dunix -DUNIX -I. -g -fsigned-char -I../include -Wall
+CFLAGS		= -w -I. -g -fsigned-char -I../include -Wall -std=c99
 LFLAGS		= -g
 # ASM		= rma
 
@@ -20,12 +20,13 @@ LFLAGS		= -g
 # CFLAGS += -DDEBUG
 
 ifeq ($(TARGETOS),Linux)
-	CFLAGS+=-mx32
+	CFLAGS+=-mx32 -Dunix -DUNIX
 	LFLAGS+=-mx32
 endif
 
 ifeq ($(TARGETOS),Mingw)
 	LIBS+=-lws2_32
+	CFLAGS += -DWIN32
 endif
 
 BINARY = rlink
