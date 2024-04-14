@@ -26,6 +26,7 @@ endif
 
 ifeq ($(TARGETOS),Mingw)
 	LIBS+=-lws2_32
+	CFLAGS += -DWIN32
 endif
 
 BINARY = rlink
