@@ -2,7 +2,7 @@ include ../make.common
 
 OBJS=cc253.o
 
-CFLAGS=-g -fsigned-char 
+CFLAGS=-g -fsigned-char -std=c99
 LFLAGS=-g
 
 ifeq ($(TARGETOS),Linux)
