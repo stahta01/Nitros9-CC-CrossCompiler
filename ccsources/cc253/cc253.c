@@ -50,13 +50,22 @@ static int tmpfd;
 
 #ifdef __MINGW32__
 PROCESS_INFORMATION pi;
+void chgsuff(char  *s, char c);
+int findsuff(char *p);
+int logo();
+int trmcat();
+int splcat(char  *s);
+int dummy();
+int usage();
+int error(char  *format, char   *arg);
 #endif
 #ifdef UNIX
 pid_t child;
 #endif
 
-runit(char*, int);
+void runit(char*, int);
 
+int
 cleanup()
 {
 #ifdef __MINGW32__
@@ -91,6 +100,7 @@ cleanup()
 }
 
 
+int
 trap(code)
 int   code;
 {
@@ -99,6 +109,7 @@ int   code;
 }
 
 /*page*/
+int
 main(argc, argv)
 int   argc;
 char  **argv;
@@ -196,7 +207,7 @@ char  **argv;
                                    goto saver;
 
                          if (libcnt == 4)
-                              error("Too many libraries");
+                              error("%s", "Too many libraries");
 
                          *--p = '-';
                          libarray[libcnt++] = p;
@@ -357,7 +368,7 @@ saver:
      }
 
      if ((aflag + rflag) > 1)
-          error("incompatible flags");
+          error("%s", "incompatible flags");
 
      if (fflag)
           if (filcnt >1)
@@ -646,7 +657,7 @@ saver:
      frkprmp = parmbuf;
 
      if (( p = chkccdev()) == NULL)
-          error("Cannot find default system drive");
+          error("%s", "Cannot find default system drive");
 
      if (bflag)
           strcpy(ofn, mainline);      /* use cstart.r or whatever */
@@ -793,6 +804,7 @@ int code;
 #endif
 
 #ifdef __MINGW32__
+void
 runit(cmd, code)
 char *cmd;
 int code;
@@ -875,6 +887,7 @@ char * chkccdev()
 }
 #endif
 
+int
 error(format, arg)
 char  *format,   *arg;
 {
@@ -884,7 +897,7 @@ char  *format,   *arg;
      trap(0);
 }
 
-
+void
 chgsuff(s, c)
 char  *s, c;
 {
@@ -902,7 +915,7 @@ char  *s, c;
 }
 
 
-
+int
 findsuff(p)
 register char *p;
 {
@@ -923,7 +936,7 @@ register char *p;
           return (0);
 }
 
-
+int
 splcat(s)
 char  *s;
 {
@@ -935,7 +948,7 @@ char  *s;
      --frkprmp;
 }
 
-
+int
 trmcat()
 {
 #ifdef OS9
@@ -945,19 +958,19 @@ trmcat()
      frkprmsiz = frkprmp - parmbuf;
 }
 
-
+int
 dummy()
 {
 }
 
-
+int
 logo()
 {
      if (hello == 0)
           fprintf(stderr, "\n cc version %d.%d.%d\n", VERSION, MAJREV, MINREV);
 }
 
-
+int
 usage()
 {
      register char **p;
