@@ -2,6 +2,10 @@
 #ifdef UNIX
 #include <stdlib.h>
 #endif
+#ifdef __MINGW32__
+#include <stddef.h>
+void* malloc(size_t);
+#endif
 #include "rma.h"
 
 #define _ischar(c) (_chcodes[c]&(_DIGIT|_LOWER|_UPPER|_CONTROL))

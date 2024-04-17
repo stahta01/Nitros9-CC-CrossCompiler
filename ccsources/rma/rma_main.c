@@ -8,6 +8,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 #endif
+#ifdef __MINGW32__
+void exit(int);
+#endif
 
 /*
  * extern FILE *f_opn(); char *itoa();
