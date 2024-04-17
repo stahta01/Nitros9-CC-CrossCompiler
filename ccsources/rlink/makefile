@@ -4,7 +4,7 @@ include ../make.common
 # SOFTLINK	= ln -s
 # RM		= rm
 # MAKE		= make
-CFLAGS		= -w -I. -g -fsigned-char -I../include -Wall -std=c99
+CFLAGS		= -w -I. -g -fsigned-char -I../include -Wall
 LFLAGS		= -g
 # ASM		= rma
 
