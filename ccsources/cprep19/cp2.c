@@ -258,7 +258,7 @@ dodefine (int a, int b)
     c = rskpbl (line, a - 1);   /* locate last char of token-sequence */
     deftok[defcntr++] = dptr;   /* Put token addr in tok table */
     putdtbl (b, c);             /* Copy token into $trng table */
-    return NULL;                /* No errors */
+    return 0;                   /* No errors */
 }
 
 int
