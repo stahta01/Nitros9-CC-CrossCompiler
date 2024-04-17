@@ -6,7 +6,7 @@
 #endif
 #include "out.h"
 
-//#define DEBUG
+/* #define DEBUG */
 
 typedef unsigned u16;		/* Little-endian coco int */
 
