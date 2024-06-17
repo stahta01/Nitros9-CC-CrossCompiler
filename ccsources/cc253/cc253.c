@@ -39,6 +39,17 @@
 #define O_RDWRCR (O_RDWR | O_CREAT)
 #endif
 
+#ifdef __STDC__
+int findsuff(char *p);
+void trmcat(void);
+void chgsuff(char *s, char c);
+void error(char *format, ...);
+int splcat(char *s);
+void dummy();
+void logo();
+void usage();
+#endif
+
 /* screw ansifront's 8 char hashing */
 #define intercept intercep
 
@@ -55,9 +66,13 @@ PROCESS_INFORMATION pi;
 pid_t child;
 #endif
 
+#ifdef __STDC__
+void runit(char*, int);
+#else
 runit(char*, int);
+#endif
 
-cleanup()
+int cleanup()
 {
 #ifdef __MINGW32__
      if (pi.hProcess)
@@ -91,7 +106,7 @@ cleanup()
 }
 
 
-trap(code)
+int trap(code)
 int   code;
 {
      cleanup();
@@ -99,7 +114,7 @@ int   code;
 }
 
 /*page*/
-main(argc, argv)
+int main(argc, argv)
 int   argc;
 char  **argv;
 {
@@ -793,9 +808,7 @@ int code;
 #endif
 
 #ifdef __MINGW32__
-runit(cmd, code)
-char *cmd;
-int code;
+void runit(char *cmd, int code)
 {
      STARTUPINFO si;
      char cmdline[256];
@@ -875,18 +888,32 @@ char * chkccdev()
 }
 #endif
 
+#ifdef __STDC__
+void error(char *format, ...)
+#else
 error(format, arg)
 char  *format,   *arg;
+#endif
 {
      logo();                             /* print logo if not done yet */
+#ifdef __STDC__
+     __builtin_va_list __local_argv; __builtin_va_start( __local_argv, format );
+     fprintf( stderr, format, __local_argv );
+     __builtin_va_end( __local_argv );
+#else
      fprintf(stderr, format, arg);
+#endif
      putc('\n', stderr);
      trap(0);
 }
 
 
+#ifdef __STDC__
+void chgsuff(char *s, char c)
+#else
 chgsuff(s, c)
 char  *s, c;
+#endif
 {
      register char  *p = s;
 
@@ -902,9 +929,12 @@ char  *s, c;
 }
 
 
-
+#ifdef __STDC__
+int findsuff(char *p)
+#else
 findsuff(p)
 register char *p;
+#endif
 {
      int   j;
      char  c;
@@ -923,9 +953,12 @@ register char *p;
           return (0);
 }
 
-
+#ifdef __STDC__
+int splcat(char *s)
+#else
 splcat(s)
 char  *s;
+#endif // __STDC__
 {
      register char *p = s;
 
@@ -936,7 +969,11 @@ char  *s;
 }
 
 
+#ifdef __STDC__
+void trmcat(void)
+#else
 trmcat()
+#endif
 {
 #ifdef OS9
      *frkprmp++ = '\n';
@@ -945,20 +982,30 @@ trmcat()
      frkprmsiz = frkprmp - parmbuf;
 }
 
-
+#ifdef __STDC__
+void dummy()
+#else
 dummy()
+#endif
 {
 }
 
 
+#ifdef __STDC__
+void logo()
+#else
 logo()
+#endif
 {
      if (hello == 0)
           fprintf(stderr, "\n cc version %d.%d.%d\n", VERSION, MAJREV, MINREV);
 }
 
-
+#ifdef __STDC__
+void usage()
+#else
 usage()
+#endif
 {
      register char **p;
      static char *help[] =  {
