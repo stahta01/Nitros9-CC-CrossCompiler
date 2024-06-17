@@ -1,6 +1,8 @@
 extern char *toknames[];
 
+#ifndef NULL
 #define NULL 0
+#endif
 
 #define T_IDENT  'A'
 #define T_NUMBER 'N'
