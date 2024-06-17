@@ -15,7 +15,7 @@
 #undef UNIX
 #endif
 #include <stdio.h>
-#if defined(UNIX) || defined(__APPLE__)
+#if defined(UNIX) || defined(__APPLE__) || defined(_WIN32)
 #include <stdlib.h>
 #include <string.h>
 #include <libgen.h>
